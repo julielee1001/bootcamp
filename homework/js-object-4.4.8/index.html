@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+    
+    <style>
+        button {
+            background-color: pink;
+            color:#f72585;
+            border: solid #f72585 3px;
+            padding: 30px;
+            font-family:Times;
+            font-weight:bold;
+            font-size:20px;
+        }
+        button:hover{
+            background-color: #ffe5ec;
+        }
+        .contact-style {
+            background-color:#ffe5ec;
+            color:#f72585;
+            border-color:#fb6f92;
+            font-size:30px;
+            border:solid 5px;
+            margin:15px;
+            width: 300px;
+            padding:20px;
+            text-align: center;
+            font-weight:bold;
+            border-radius:50px;
+        }
+        
+    </style>
+	</head>
+
+	<body>
+	    <div id = container>
+    	    <h1>My Phonebook</h1>
+    	    <div id = button-container>
+        	    <button id = add>Add Contact</button>
+        	    <button id = retrieve>Retrieve Contact</button>
+        	    <button id = print>Print Contacts</button>
+    	    </div>
+    	    <div id = contact-reveal></div>
+	    </div>
+	    <script>
+	        if(localStorage.phonebook){
+	        var phonebook = JSON.parse(localStorage.phonebook);
+	        } else {
+	        var phonebook = [];
+	        }
+	    
+            $("#add").click(function(){
+              addContact(); 
+            })
+            
+            $("#retrieve").click(function(){
+                var firstName = prompt("First Name:");
+    	        var lastName = prompt("Last Name:");
+    	        
+    	        if(contactExists(firstName, lastName) == true){
+	                retrieveContact(firstName, lastName);
+	            }else{
+	                var newContact = prompt("Contact not found. Would you like to create a new one?");
+	                if(newContact.toLowerCase() == "yes"){
+	                    addContact();
+	                }else{
+	                    alert("You have chosen to not create a new contact.");
+	                }
+	            }
+            })
+            
+            $("#print").click(function(){
+                printContacts();
+            })
+	        
+	        function addContact()
+	        {
+	            var userFirst = prompt("First Name:");
+	            var userLast = prompt("Last Name:");
+	            var userNum = prompt("Number:");
+	            
+	            var contact = {
+                firstName: userFirst,
+                lastName: userLast,
+                number: userNum
+                };
+                
+                phonebook.push(contact);
+                localStorage.phonebook = JSON.stringify(phonebook);
+
+	        }
+	        
+	        function contactExists(first, last)
+	        {
+	            var phonebook = JSON.parse(localStorage.phonebook);
+                for(var i = 0; i < phonebook.length; i++)
+                    
+                if(first == phonebook[i].firstName && last == phonebook[i].lastName)
+                {
+                    return true;
+                }
+                    return false;
+
+	        }
+	        
+	        function retrieveContact(first, last)
+	        {
+	            var phonebook = JSON.parse(localStorage.phonebook);
+	            
+	            for(var i = 0; i < phonebook.length;i++){
+	                if(phonebook[i].firstName == first && phonebook[i].lastName == last)
+	                {
+	                    $("#contact-reveal").append(phonebook[i].firstName + " " + phonebook[i].lastName + ": " + phonebook[i].number);
+	                }
+	            }
+	        }
+	        
+	        function printContacts()
+	        {
+	            var phonebook = JSON.parse(localStorage.phonebook);
+	            
+	            for(var i = 0; i < phonebook.length;i++){
+	                $("#contact-reveal").append("<div class='contact-style'>" + phonebook[i].firstName + " " + phonebook[i].lastName + "<br>" + phonebook[i].number + "</div");
+	            }
+	        }
+	    </script>
+	</body>
+</html>
