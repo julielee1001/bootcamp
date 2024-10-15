@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>To Do List</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+		</script>
+		<style>
+		    
+		    body{
+		        background-color: aliceblue;
+		        font-family: fantasy;
+		        color: navy;
+		    }
+		    input[type=submit] {
+		        background-color: #bde0fe;
+		    }
+		    
+		    input:hover {
+		        border-color:red;
+		    }
+		    
+		    li {
+		        margin: 10px;
+		        width:max-content;
+		    }
+		    
+		    li:hover {
+		        color:blueviolet;
+		    }
+		</style>
+	</head>
+
+	<body>
+		<div id = "to-do">
+		    <h4>To Do List!</h4>
+		</div>
+		<hr>
+		<div>
+		    <form id = task-form onsubmit=saveTask()>
+		        Enter your task here:
+		        <input type = text name = task>
+		        <input type = submit>
+		    </form>
+		</div>
+		<br>
+		<div id= "to-do-list">
+		</div>
+	</body>
+	<script>
+	    if(localStorage.tasks)
+	        {
+	           //check if local storage exists
+	           var tasks = JSON.parse(localStorage.tasks);
+	           //if task exists, add to div
+    	       for(var i = 0; i < tasks.length;i++){
+    	          $("#to-do-list").append("<li>" + tasks[i] + "</li>");
+    	       }
+	        } else{
+	            var tasks = [];
+	        }
+	        
+	    function saveTask(){
+	        //copy code form previous
+	        //prevents refreshing the page when submit is clicked
+	        event.preventDefault();
+	        
+	        //puts the form data into an array
+	        var taskList = $("#task-form").serializeArray();
+	        var task = taskList[0].value;
+	        $("#to-do-list").append("<li>" + task + "</li>"); 
+	        $("form").trigger("reset");
+	        
+	        //add the new task to the tasks array
+	        tasks.push(task);
+	        //store as a string in local storage
+	        localStorage.tasks = JSON.stringify(tasks);
+	       
+	    }
+	    //when li is clicked, add a line through decoration
+	    $("#to-do-list").on("click", "li", function(){
+	        $(this).css("text-decoration", "line-through");
+	        //grab the index of the task
+	        var taskIndex = $(this).index();
+	        //then splice the selected task in array
+	        tasks.splice(taskIndex, 1) //this means remove 1 element at selected index
+	        localStorage.tasks = JSON.stringify(tasks);
+	    })
+	    
+	    
+	</script>
+</html>
