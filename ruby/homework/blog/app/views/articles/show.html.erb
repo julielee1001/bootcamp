@@ -1,0 +1,39 @@
+<% content_for :javascript do %>
+  <script type="module">
+    import "article";
+  </script>
+<% end %>
+
+<div class="container">
+  <h1><%= @article.title %></h1>
+
+  <div id="article-content">
+    <p><%= @article.body %></p>
+
+    <ul>
+      <li><%= link_to "Edit Article", edit_article_path(@article) %></li>
+      <li><%= link_to "Destroy Article", article_path(@article), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                      } %></li>
+
+    </ul>
+
+    <div class='comments'>
+      <h2>Comments</h2>
+      <%= render @article.comments %>
+
+      <h2>Add a comment:</h2>
+      <%= render "comments/form", article: @article %>
+
+    </div>
+
+  </div>
+
+  <button id="toggle-button">Toggle Details</button>
+
+  <br>
+  
+  <%= link_to "Back to Articles", articles_path %>
+  
+</div>

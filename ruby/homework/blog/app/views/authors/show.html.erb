@@ -1,0 +1,25 @@
+<div class="container">
+<h1><%= @author.name %></h1>
+<p><%= @author.bio %></p>
+
+<h2> Articles by <%= @author.name %> </h2>
+<% if @articles.present? %>
+    <% @articles.each do |article| %>
+        <div>
+            <p><%= link_to article.title, article_path(article) %></p>
+        </div>
+    <% end %>
+<% else %>
+    <p>No Articles Found by this Author</p>
+<%end%>
+
+<ul>
+  <li><%= link_to "Edit Author", edit_author_path(@author) %></li>
+  <li><%= link_to "Destroy Author", author_path(@author), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+
+</ul>
+    <%= link_to "Back to Authors", authors_path %>
+</div>

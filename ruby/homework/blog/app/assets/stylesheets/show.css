@@ -1,0 +1,14 @@
+h2 {
+    color: rgb(19, 41, 169);
+}
+
+.comments {
+    border: solid 3px;
+    border-radius: 10px;
+    border-color: rgb(56, 81, 156);
+    margin-bottom: 10px;
+    background-color: rgb(215, 229, 255);
+    padding: 10px;
+    padding-left: 20px;
+    margin-right: 20px;
+}

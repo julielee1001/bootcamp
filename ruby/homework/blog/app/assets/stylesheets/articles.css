@@ -1,0 +1,11 @@
+.list {
+    border: solid 3px;
+    border-radius: 10px;
+    border-color: rgb(56, 81, 156);
+    margin-bottom: 10px;
+    background-color: rgb(215, 229, 255);
+}
+
+footer {
+    font-weight: bold;
+}
