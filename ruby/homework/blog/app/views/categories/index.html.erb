@@ -1,18 +1,18 @@
 <div class='container'>
-<h1>Categories</h1>
+  <h1>Categories</h1>
 
-<ul>
-  <% @categories.each do |category| %>
-    <li>
-        <%= link_to category.name, category %> - <i><%= category.description %></i> - <%= category.articles.count %> articles
-        <%= image_tag category.image, width:"50px" if category.image.attached? %>
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @categories.each do |category| %>
+      <li>
+          <%= link_to category.name, category %> - <i><%= category.description %></i> - <%= category.articles.count %> articles
+          <%= image_tag category.image, width:"50px" if category.image.attached? %>
+      </li>
+    <% end %>
+  </ul>
 
 
-<%= link_to "New Category", new_category_path %> |
-<%= link_to "View All Articles", articles_path %> |
-<%= link_to "View All Authors", authors_path %> |
-<%= link_to "Support the Blog", new_donation_path %>
+  <%= link_to "New Category", new_category_path %> |
+  <%= link_to "View All Articles", articles_path %> |
+  <%= link_to "View All Authors", authors_path %> |
+  <%= link_to "Support the Blog", new_donation_path %>
 </div>

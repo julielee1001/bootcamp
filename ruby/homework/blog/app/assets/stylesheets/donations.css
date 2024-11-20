@@ -1,4 +1,10 @@
 button {
-    margin: 20px;
+    margin: 10px;
     margin-left: 50px;
+}
+
+#card-container {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border:1px solid;
 }
