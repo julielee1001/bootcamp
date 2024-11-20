@@ -1,7 +1,6 @@
-<div class="container">
+<div class='container'>
 <h1>Authors</h1>
 
-<div class="list">
 <ul>
   <% @authors.each do |author| %>
     <li>
@@ -9,7 +8,6 @@
     </li>
   <% end %>
 </ul>
-</div>
 
     <%= link_to "New Author", new_author_path %> |
     <%= link_to "View All Articles", articles_path %> |

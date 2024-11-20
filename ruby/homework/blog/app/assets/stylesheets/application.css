@@ -13,29 +13,7 @@
  *= require_tree .
  *= require_self
  */
-body {
-    background-color: rgb(229, 240, 255);
-    font-family:'Times New Roman', Times, serif;
-}
 
-.container {
-    background-color: rgb(198, 224, 255);
-    border: solid 5px;
-    border-color: rgb(56, 81, 156);
-    width: 80%;
-    margin: auto;
-    margin-top: 60px;
-    padding: 30px;
-    padding-left: 100px;
-}
-
-ul {
-    list-style-type: none;
-}
-
-h1 {
-    color: rgb(19, 41, 169);
-}
 
 
 
