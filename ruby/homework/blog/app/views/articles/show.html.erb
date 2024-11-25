@@ -21,14 +21,22 @@
 
   </ul>
 
+
   <h2>Comments</h2>
-  <%= render @article.comments %>
+
+  <div id="comments">
+    <%= render @article.comments %>
+  </div>
+
+  <button id="load-comments" data-article="<%= @article.id %>">
+  Load More Comments
+  </button>
 
   <h2>Add a comment:</h2>
   <%= render "comments/form", article: @article %>
-
-
 </div>
+
+<br>
 
 <button id="toggle-button">Toggle Details</button>
 

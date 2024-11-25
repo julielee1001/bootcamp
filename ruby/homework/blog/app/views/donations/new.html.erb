@@ -26,6 +26,15 @@
         <div id="card-element"><!-- Stripe will place the card input here --></div>
     </div>
 
+    <br>
+    <br>
+    
+    <%= check_box_tag(:recurring) %>
+    <%= label_tag(:recurring, "Make this a monthly donation") %>
+
+    <br>
+    <br>
+
   <button type="submit">Donate</button>
 <% end %>
 
